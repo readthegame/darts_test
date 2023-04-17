@@ -18,7 +18,7 @@ def handler(event=None, context=None):
     options.add_argument(f"--data-path={mkdtemp()}")
     options.add_argument(f"--disk-cache-dir={mkdtemp()}")
     options.add_argument("--remote-debugging-port=9222")
-    chrome = webdriver.Chrome("/opt/chromedriver",
+    driver = webdriver.Chrome("/opt/chromedriver",
                               options=options)
     driver.get('https://www.google.com/')
 
