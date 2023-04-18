@@ -2,7 +2,6 @@ from selenium import webdriver
 from tempfile import mkdtemp
 from selenium.webdriver.common.by import By
 
-
 def handler(event=None, context=None):
     options = webdriver.ChromeOptions()
     options.binary_location = '/opt/chrome/chrome'
@@ -20,14 +19,13 @@ def handler(event=None, context=None):
     options.add_argument("--remote-debugging-port=9222")
     driver = webdriver.Chrome("/opt/chromedriver",
                               options=options)
-    driver.get('https://www.google.com/')
+    driver.get("https://tv.dartconnect.com/events/pdc")
+    source = driver.page_source
+    events = driver.find_elements_by_css_selector('div.even\:bg-spindle-100')
 
     driver.close();
     driver.quit();
 
-    response = {
-        "statusCode": 200,
-        "body": "Selenium Headless Chrome Initialized"
-    }
+    response = events
 
     return response
