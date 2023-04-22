@@ -21,11 +21,11 @@ def handler(event=None, context=None):
                               options=options)
     driver.get("https://tv.dartconnect.com/events/pdc")
     source = driver.page_source
-    events = driver.find_elements_by_class_name('div.even\:bg-spindle-100')
-
+    #events = driver.find_elements_by_class_name('div.even\:bg-spindle-100')
+    
     driver.close();
     driver.quit();
 
-    response = events
+    response = source
 
     return response
